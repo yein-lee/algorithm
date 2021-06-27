@@ -1,32 +1,29 @@
 import sys
 
-n, m = map(int, sys.stdin.readline().split())
+k, n = map(int, sys.stdin.readline().split())
 lan_list = list()
-
-for i in range(n):
+for i in range(k):
     lan_list.append(int(sys.stdin.readline()))
 
-print(lan_list)
-max_legnth = max(lan_list)
 min_length = 1
+max_length = max(lan_list)
 
-
-def is_available(len):
+def is_possible(length):
     cnt = 0
-    for lan in lan_list:
-        cnt += lan // len
+    for i in range(k):
+        cnt += lan_list[i]//length
 
-    if cnt >= m:
+    if cnt>=n:
         return True
-    else:
-        return False
+    return False
 
-result = 0
-while(min_length<=max_legnth):
-    mid = (min_length + max_legnth)//2
-    if(is_available(mid)):
-        min_length = mid + 1
+ans = 0
+while(min_length<=max_length):
+    mid_length = (min_length+max_length)//2
+    if(is_possible(mid_length)):
+        min_length = mid_length + 1
+        ans = mid_length
     else:
-        max_legnth = mid -1
+        max_length = mid_length - 1
 
-print(mid)
+print(ans)
