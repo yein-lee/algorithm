@@ -1,14 +1,27 @@
 import sys
 
 n, c = map(int, sys.stdin.readline().split())
-coordinates = [int(sys.stdin.readline()) for _ in range(N)]
+house = [int(sys.stdin.readline()) for _ in range(n)]
 
-def counter(distance):
+def router_counter(distance):
     count = 1
-    cur_coordinate
+    cur_house = house[0]
+    for i in range(1, n):
+        if cur_house + distance <= house[i]:
+            count += 1
+            cur_house = house[i]
+    return count
 
-low = min(coordinate)
-high = max(coordinate)
-result = 0
-while(low<=high):
-    mid = (low+high)//2
+house.sort()
+start, end = 1, house[-1]-house[0]
+
+
+while(start<=end):
+    mid = (start+end)//2
+    if router_counter(mid) >= c:
+        answer = mid
+        start = mid+1
+    else:
+        end = mid-1
+
+print(answer)
