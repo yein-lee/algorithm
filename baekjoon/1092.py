@@ -8,9 +8,6 @@ weights = list(map(int, sys.stdin.readline().split()))
 limits.sort(reverse=True)
 weights.sort(reverse=True)
 
-# print(limits)
-# print(weights)
-
 if weights[0]>limits[0]:
     print(-1)
     exit()
@@ -27,6 +24,5 @@ while(weights):
         else:
             j += 1
     result += 1
-    #print(result)
 
 print(result)
